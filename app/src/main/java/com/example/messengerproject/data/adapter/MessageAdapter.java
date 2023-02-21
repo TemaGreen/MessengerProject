@@ -32,7 +32,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ItemMessage itemMessage = list.get(position);
         holder.binding.imageAvatar.setImageResource(itemMessage.getIconId());
-        holder.binding.textView.setText(itemMessage.getTextMessage());
+        holder.binding.textMessage.setText(itemMessage.getTextMessage());
+        holder.binding.timeMessage.setText(itemMessage.getTimeMessage());
     }
 
     @Override

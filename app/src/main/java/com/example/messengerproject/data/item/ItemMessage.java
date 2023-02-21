@@ -10,6 +10,8 @@ public class ItemMessage {
 
     private String textMessage;
 
+    private String timeMessage;
+
     public int getIconId() {
         return iconId;
     }
@@ -40,6 +42,22 @@ public class ItemMessage {
 
     public void setTextMessage(String text_message) {
         this.textMessage = text_message;
+    }
+
+    public String getTimeMessage() {
+        return timeMessage;
+    }
+
+    public void setTimeMessage(String timeMessage) {
+        this.timeMessage = timeMessage;
+    }
+
+    public ItemMessage(int iconId, int id_author, int id_recipient, String text_message, String timeMessage) {
+        this.iconId = iconId;
+        this.id_author = id_author;
+        this.id_recipient = id_recipient;
+        this.textMessage = text_message;
+        this.timeMessage = timeMessage;
     }
 
     public ItemMessage(int iconId, int id_author, int id_recipient, String text_message) {
