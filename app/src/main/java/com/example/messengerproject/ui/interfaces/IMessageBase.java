@@ -10,9 +10,8 @@ public interface IMessageBase {
 
         void setAdapter(MessageAdapter adapter);
 
-        String getEnterTextMessage();
+        String getTextMessage();
 
-        void clearTextViewForEnterMessage();
     }
 
     interface IPresenter extends IPresenterBase<IView>{

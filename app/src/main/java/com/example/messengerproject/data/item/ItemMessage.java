@@ -1,80 +1,116 @@
 package com.example.messengerproject.data.item;
 
+import com.example.messengerproject.R;
+import com.example.messengerproject.data.model.ResponseMessage;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 public class ItemMessage {
 
-    private int iconId;
+    private int id;
 
     private int id_author;
 
-    private int id_recipient;
+    private int icon;
+
+    private String name;
 
     private String textMessage;
 
-    private String timeMessage;
+    private Date time;
 
-    public int getIconId() {
-        return iconId;
+    private static final Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+
+    static {
+        map.put(1, R.drawable.ic_user_1);
+        map.put(2, R.drawable.ic_user_2);
+        map.put(3, R.drawable.ic_user_3);
+        map.put(4, R.drawable.ic_user_4);
+        map.put(5, R.drawable.ic_user_5);
+        map.put(6, R.drawable.ic_user_6);
+        map.put(7, R.drawable.ic_user_7);
+        map.put(8, R.drawable.ic_user_8);
+        map.put(9, R.drawable.ic_user_9);
+        map.put(10, R.drawable.ic_user_10);
     }
 
-    public void setIconId(int iconId) {
-        this.iconId = iconId;
+    public int getId() {
+        return id;
     }
 
-    public int getAuthor() {
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId_author() {
         return id_author;
     }
 
-    public void setAuthor(int id) {
-        this.id_author = id;
+    public void setId_author(int id_author) {
+        this.id_author = id_author;
     }
 
-    public int getRecipient() {
-        return id_recipient;
+    public int getIcon() {
+        return map.get(icon);
     }
 
-    public void setRecipient(int id) {
-        this.id_recipient = id;
+    public void setIcon(int icon) {
+        this.icon = icon;
     }
 
     public String getTextMessage() {
         return textMessage;
     }
 
-    public void setTextMessage(String text_message) {
-        this.textMessage = text_message;
+    public void setTextMessage(String textMessage) {
+        this.textMessage = textMessage;
     }
 
-    public String getTimeMessage() {
-        return timeMessage;
+    public Date getTime() {
+        return time;
     }
 
-    public void setTimeMessage(String timeMessage) {
-        this.timeMessage = timeMessage;
+    public void setTime(Date time) {
+        this.time = time;
     }
 
-    public ItemMessage(int iconId, int id_author, int id_recipient, String text_message, String timeMessage) {
-        this.iconId = iconId;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public ItemMessage(int id, int id_author, int icon, String name, String textMessage, Date time) {
+        this.id = id;
         this.id_author = id_author;
-        this.id_recipient = id_recipient;
-        this.textMessage = text_message;
-        this.timeMessage = timeMessage;
+        this.icon = icon;
+        this.name = name;
+        this.textMessage = textMessage;
+        this.time = time;
     }
 
-    public ItemMessage(int iconId, int id_author, int id_recipient, String text_message) {
-        this.iconId = iconId;
+    public ItemMessage(int id, int id_author, int icon, String name, String textMessage, long time) {
+        this.id = id;
         this.id_author = id_author;
-        this.id_recipient = id_recipient;
-        this.textMessage = text_message;
+        this.icon = icon;
+        this.name = name;
+        this.textMessage = textMessage;
+        this.time = new Date(time);
     }
 
-    public ItemMessage(int id_author, int id_recipient, String text_message) {
-        this.id_author = id_author;
-        this.id_recipient = id_recipient;
-        this.textMessage = text_message;
-    }
-
-    public ItemMessage() {
-
+    public ItemMessage(ResponseMessage responseMessage) {
+        this.id = responseMessage.getId();
+        this.id_author = responseMessage.getAuthor();
+        this.icon = responseMessage.getIcon();
+        this.name = responseMessage.getName();
+        this.textMessage = responseMessage.getText();
+        this.time = new Date(responseMessage.getTime());
     }
 }
 

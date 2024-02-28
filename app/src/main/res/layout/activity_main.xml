@@ -9,13 +9,47 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/name_application"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/btnSelectUserFirst"
+            app:layout_constraintEnd_toEndOf="@+id/btnSelectUserFirst"
+            app:layout_constraintStart_toStartOf="@+id/btnSelectUserFirst" />
+
+        <Button
+            android:id="@+id/btnSelectUserFirst"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello World!"
+            android:text="@string/user_1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnSelectUser"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/user_list"
+            app:layout_constraintEnd_toEndOf="@+id/btnSelectUserFirst"
+            app:layout_constraintStart_toStartOf="@+id/btnSelectUserFirst"
+            app:layout_constraintTop_toBottomOf="@+id/btnSelectUserFirst" />
+
+        <Button
+            android:id="@+id/btnNewUser"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/new_user"
+            app:layout_constraintEnd_toEndOf="@+id/btnSelectUser"
+            app:layout_constraintStart_toStartOf="@+id/btnSelectUser"
+            app:layout_constraintTop_toBottomOf="@+id/btnSelectUser" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

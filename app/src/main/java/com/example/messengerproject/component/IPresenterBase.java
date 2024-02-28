@@ -4,7 +4,6 @@ public interface IPresenterBase<T extends IViewBase> {
 
     void attachView(T view);
 
-    void detachView();
-
     void viewIsReady();
+
 }

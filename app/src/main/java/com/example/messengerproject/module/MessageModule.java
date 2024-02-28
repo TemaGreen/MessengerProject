@@ -2,6 +2,8 @@ package com.example.messengerproject.module;
 
 import com.example.messengerproject.component.MessageManager;
 
+import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
 
@@ -9,7 +11,8 @@ import dagger.Provides;
 public class MessageModule {
 
     @Provides
-    MessageManager provideMessageManager(){
+    @Singleton
+    MessageManager provideMessageManager() {
         return new MessageManager();
     }
 }

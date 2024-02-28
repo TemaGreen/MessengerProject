@@ -1,11 +1,14 @@
 package com.example.messengerproject.component;
 
+import javax.inject.Inject;
+
 public class MessageManager {
 
+    @Inject
+    DataManager dataManager;
 
-    public void send(String message){
-
-    }
+    @Inject
+    UserManager userManager;
 
     public MessageManager() {
     }

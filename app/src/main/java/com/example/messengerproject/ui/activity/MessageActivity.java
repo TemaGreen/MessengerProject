@@ -1,16 +1,18 @@
 package com.example.messengerproject.ui.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.messengerproject.R;
 import com.example.messengerproject.component.App;
 import com.example.messengerproject.data.adapter.MessageAdapter;
-import com.example.messengerproject.databinding.ActivityMessangeBinding;
+import com.example.messengerproject.databinding.ActivityMessageBinding;
 import com.example.messengerproject.ui.interfaces.IMessageBase;
 import com.example.messengerproject.ui.presenter.MessagePresenter;
 
@@ -18,7 +20,7 @@ import javax.inject.Inject;
 
 public class MessageActivity extends AppCompatActivity implements IMessageBase.IView {
 
-    ActivityMessangeBinding binding;
+    ActivityMessageBinding binding;
 
     @Inject
     MessagePresenter presenter;
@@ -26,8 +28,11 @@ public class MessageActivity extends AppCompatActivity implements IMessageBase.I
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_messange);
         App.getAppComponent().inject(this);
+        setContentView(R.layout.activity_message);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_message);
+
+        initPresenter();
     }
 
     private void initPresenter(){
@@ -44,8 +49,8 @@ public class MessageActivity extends AppCompatActivity implements IMessageBase.I
     }
 
     private void initToolBar(){
-        setSupportActionBar(binding.toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //setSupportActionBar(binding.toolbar);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -55,13 +60,10 @@ public class MessageActivity extends AppCompatActivity implements IMessageBase.I
     }
 
     @Override
-    public void clearTextViewForEnterMessage() {
+    public String getTextMessage() {
+        String text = binding.etEnterMessage.getText().toString();
         binding.etEnterMessage.getText().clear();
-    }
-
-    @Override
-    public String getEnterTextMessage() {
-        return binding.etEnterMessage.getText().toString();
+        return text;
     }
 
     @Override
@@ -71,6 +73,11 @@ public class MessageActivity extends AppCompatActivity implements IMessageBase.I
 
     @Override
     public Activity getActivity() {
+        return this;
+    }
+
+    @Override
+    public Context getContext() {
         return this;
     }
 
